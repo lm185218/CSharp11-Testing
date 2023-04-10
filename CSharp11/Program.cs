@@ -1,19 +1,18 @@
-﻿//Top level statements mean I can write code in the Program.cs without a surrounding class
-
-using CSharp11;
+﻿using CSharp11;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
+        //comment out the relevant methods to see the functionality individually.
         StringUpdates();
         GenericMathSupport.NewMathChanges();
+        RecordExample();
+        PatternMatchingExample();
     }
 
     public static void StringUpdates()
     {
-        //--------------------------------------------------------------------------------------------------
-
         //New for c#11 is string literals, denoted by 3 double quotes (")
         string stringLiteral = """
         {
@@ -89,5 +88,31 @@ internal class Program
         """;
 
         Console.WriteLine(multiLineInterpolation);
+    }
+
+    public static void PatternMatchingExample()
+    {
+        var name = "Lewis";
+        if (name is [var first, _, .. var rest])
+        {
+            Console.WriteLine($"First Letter {first}");
+            Console.WriteLine($"rest after second letter {rest}");
+        }
+    }
+
+    public static void RecordExample()
+    {
+        Person p1 = new("Lewis", "Doe");
+        // nondestructive mutation, creates a new object with modified properties. Since we are 
+        // working with an immutable type.
+        Person p2 = p1 with { LastName = "McKaig" };
+
+        Console.WriteLine(p1.FirstName);
+        Console.WriteLine(p2.LastName);
+    }
+
+    public record Person(string FirstName, string LastName)
+    {
+        //compiler will auto generate the constructors and read only properties for us
     }
 }

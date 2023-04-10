@@ -15,13 +15,7 @@ namespace CSharp11
             }
             Console.WriteLine();
 
-            int[] ints = new int[] { 0, 1, 2, 3 };
-            // example of pattern matching, this case we check the ints array has 4 Items, first item is 0, last
-            // is 3. (the '_' is the discard pattern meaning we match anything)
-            if (ints is [0, _, _, 3])
-            {
-                Console.WriteLine("pattern match pass");
-            }
+            int[] ints = new[] { 0, 1, 2, 3 };
             var squaredInts = SquareAll(ints);
             foreach (var i in squaredInts)
             {
