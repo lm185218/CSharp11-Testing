@@ -31,7 +31,7 @@ internal class Program
 
         var option = 2;
 
-        //new pattern matching syntax switch statements
+        //new pattern matching syntax switch expression
         var loggingValue = option switch
         {
             1 => "Information",
